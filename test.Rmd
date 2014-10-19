@@ -1,0 +1,51 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+
+This is my document for the Peer Assessment 1. I address the questions below with code examples.
+
+## Loading and preprocessing the data
+I set the directory and read in the source file.
+
+```{r}
+setwd("./ReproducibleResearchAssignment1")
+## Read in activity data
+activity <- read.cs
+## I aggregate the data to calculate the sums for the steps.
+sumA <- aggregate(steps ~ date ,data = activity, sum)
+
+```
+## What is mean total number of steps taken per day?
+1. I draw the histogram for the total steps.
+```{r}
+hist(sumA$steps)
+```
+2. The mean and median are calculated with the code below:
+```{r}
+meanA <- mean(sumA$steps)
+medianA <- median(sumA$steps)
+```
+They are: mean: 10766.19 and median: 10765
+
+## What is the average daily activity pattern?
+1. the code for the time series plot is below. Again, I aggregated the steps this time with intervals and the function, mean.
+```{r}
+aveI <- aggregate(steps ~ interval ,data = activity, mean)
+plot(aveI$interval,aveI$steps, type = "l")
+```
+2. The plot shows the interval with the maximum average steps. The code below is the calculation.
+```{r}
+
+xI <- aveI$interval[which.max(aveI$steps)]
+
+```
+
+The interval is 835
+## Imputing missing values
+
+
+
+## Are there differences in activity patterns between weekdays and weekends?

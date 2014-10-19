@@ -2,10 +2,7 @@
 setwd("./ReproducibleResearchAssignment1")
 ## Read in activity data
 activity <- read.csv("activity.csv")
-## 
-# install.packages("reshape2")
-# library("reshape2")
-## wide <- dcast(activity, interval ~ date, value.var = "steps")
+## I aggregate the data to calculate the sums for the steps.
 sumA <- aggregate(steps ~ date ,data = activity, sum)
 hist(sumA$steps)
 dev.copy(png, file= "histogramTotalStepsIgnoredNAs.png")
