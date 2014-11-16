@@ -83,6 +83,8 @@ medianA <- median(sumA$steps)
 ```
 They are: mean: 10766.19 and median: 10765
 
+![](./figure/histogramTotalStepsIgnoredNAs.png) 
+
 ## What is the average daily activity pattern?
 The code for the time series plot is below. The steps are aggregated intervals. The plot includes a line at the maximum interval. 
 
@@ -99,6 +101,8 @@ text(maxI, aveI$steps[rowNum], as.character(trunc(aveI$step[rowNum])), pos = 2, 
 dev.copy(png, file= "./figure/averageStepsPerInterval.png")
 dev.off()
 ```
+
+![](./figure/averageStepsPerInterval.png)
 
 ## Imputing missing values
 Calculate the number of missing values by subtracting the number of complete cases from the total number of step entries. 
@@ -138,6 +142,9 @@ dev.copy(png, file= "./figure/histogramTotalStepsFilledNAs.png")
 dev.off()
 ```
 
+![](./figure/histogramTotalStepsFilledNAs.png)
+
+
 They are virtually the same as the values with the NAs ignored. 
 They are: mean: 10766.19 and median: 10766.19. I tested other missing value replacements and got differences. It was using this choice that kept them close. They was no impact when using these replacement choices.
 
@@ -164,3 +171,5 @@ xyplot(steps ~ interval | dayType, data = stepsAveInt, layout = c(1,2), type = "
 dev.copy(png, file= "./figure/AverageStepsbyDayType.png")
 dev.off()
 ```
+
+![](./figure/AverageStepsbyDayType.png)
